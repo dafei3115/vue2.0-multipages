@@ -27,14 +27,18 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {},
     cssSourceMap: false
-  }
+  },
+  getEntry:getEntry
 }
+
 //获取所有入口文件//
 function getEntry(globPath) {
-  var entries = {},basename;
+  var entries = {},
+    basename, tmp, pathname;
   glob.sync(globPath).forEach(function(entry) {
     basename = path.basename(entry, path.extname(entry));
-    entries[basename] = entry;
+    pathname = basename.split("_")[0];
+    entries[pathname] = entry;
   });
   return entries;
 }

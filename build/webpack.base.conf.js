@@ -4,7 +4,7 @@ const glob = require('glob')//
 const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
-var entries = getEntry('./src/pages/**/*.js')//
+var entries = config.getEntry('./src/pages/**/*.js')//
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -65,17 +65,5 @@ module.exports = {
       }
     ]
   }
-}
-//获取入口js文件//
-function getEntry(globPath) {
-  var entries = {},
-    basename, tmp, pathname;
-
-  glob.sync(globPath).forEach(function(entry) {
-    basename = path.basename(entry, path.extname(entry));
-    pathname = basename.split("_")[0];
-    entries[pathname] = entry;
-  });
-  return entries;
 }
 
