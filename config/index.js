@@ -15,7 +15,7 @@ var pages = getEntry('src/pages/**/*.html');
 
 //每个入口页面生成一个入口添加到build中//
 for (var pathname in pages) {
-  build.pathname = path.resolve(__dirname, '../dist/' + pathname + '.html')
+  build[pathname] = path.resolve(__dirname, '../dist/' + pathname + '.html')
 }
 module.exports = {
   build: build,//生成的配置build
