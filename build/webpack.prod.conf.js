@@ -66,23 +66,9 @@ for (var pathname in pages) {
       collapseWhitespace: true,
       removeAttributeQuotes: true
     },
-    chunks: [pathname]
-  }
-  plugins.push(new HtmlWebpackPlugin(conf));
-}
-for (var pathname in pages) {
-  var conf = {
-    filename: process.env.NODE_ENV === 'testing' ? pathname + '.html' : config.build[pathname],
-    template: pages[pathname],
-    inject: true,
-    minify: {
-      removeComments: true,
-      collapseWhitespace: true,
-      removeAttributeQuotes: true
-    },
     chunks: ['manifest', 'vendor', pathname]
-  }
-  plugins.push(new HtmlWebpackPlugin(conf));
+  };
+  plugins.push(new HtmlWebpackPlugin(conf));  
 }
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -119,4 +105,5 @@ if (config.build.bundleAnalyzerReport) {
   const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
   webpackConfig.plugins.push(new BundleAnalyzerPlugin())
 }
+
 module.exports = webpackConfig

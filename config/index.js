@@ -13,9 +13,10 @@ var build = {
 //根据getEntry获取所有入口主页面//
 var pages = getEntry('src/pages/**/*.html');
 
-//每个入口页面生成一个入口添加到build中//
+//每个入口页面生成一个入口添加到build下相应目录中//
 for (var pathname in pages) {
-  build[pathname] = path.resolve(__dirname, '../dist/' + pathname + '.html')
+  var p=path.dirname(pages[pathname]).split("/");
+  build[pathname] = path.resolve(__dirname, '../dist/'+ p[p.length-1] +'/' + pathname + '.html')
 }
 module.exports = {
   build: build,//生成的配置build
@@ -36,6 +37,7 @@ function getEntry(globPath) {
   var entries = {},
     basename, tmp, pathname;
   glob.sync(globPath).forEach(function(entry) {
+
     basename = path.basename(entry, path.extname(entry));
     pathname = basename.split("_")[0];
     entries[pathname] = entry;

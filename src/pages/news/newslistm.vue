@@ -1,13 +1,13 @@
 <template>
   <div class="warp">
-    <h1 id="aaa">index</h1>
-    <p>indexindexindex{{this.$route.query.uid}}</p>
+    <p>aaaa</p>
     <hello></hello>
   </div>
 </template>
 <script>
-require("../../assets/js/common");
+// require("../../assets/js/common");
 import Hello from '../../components/HelloWorld'
+
 export default {
   name: 'index',
   components: {
@@ -16,10 +16,10 @@ export default {
   data() {
     return {
       bannerHref: '',
+
     }
   },
   mounted() {
-
     this.loadData();
   },
   methods: {
@@ -27,19 +27,11 @@ export default {
       var rep = {
         bannerPosition: 'hasActive'
       }
-      $("#aaa").html("indexaaa")
     }
   }
 }
 </script>
-<style lang="less" scoped>
-.warp {
-  max-width: 750px;
-  margin: 0 auto;
-  background: #CCC;
-}
-.warp{
-  h1{ font-size: 28px;}
-  p{ font-size: 16px;}
-}
+
+<style scoped>
+/* @import "../../assets/css/common.less"; */
 </style>
